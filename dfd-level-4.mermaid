@@ -1,0 +1,33 @@
+flowchart TD
+    %% Image Processing Detail
+    P1[1.2.1\nImage Preprocessing]
+    P2[1.2.2\nFeature Extraction]
+    P3[1.2.3\nLLama Vision Analysis]
+    
+    %% Stock Management Detail
+    P4[4.1.1\nCheck Current Stock]
+    P5[4.1.2\nReorder Analysis]
+    P6[4.1.3\nUpdate Inventory]
+    
+    %% Product Addition Detail
+    P7[4.2.1\nImage Processing]
+    P8[4.2.2\nProduct Details Entry]
+    P9[4.2.3\nDatabase Update]
+    
+    %% Data Stores
+    DS1[(Product DB)]
+    DS2[(Image DB)]
+    
+    %% Flows
+    P1 -->|Processed Image| P2
+    P2 -->|Features| P3
+    P3 -->|Results| DS2
+    
+    P4 -->|Stock Levels| P5
+    P5 -->|Requirements| P6
+    P6 -->|Updates| DS1
+    
+    P7 -->|Processed Image| P8
+    P8 -->|Details| P9
+    P9 -->|New Product| DS1
+    P9 -->|Store Image| DS2

@@ -1,0 +1,40 @@
+flowchart TD
+    %% External Entities
+    Customer[Customer]
+    Staff[Staff]
+    
+    %% Processes
+    P1((1.0\nProduct Search))
+    P2((2.0\nOrder Processing))
+    P3((3.0\nAuthentication))
+    P4((4.0\nInventory Management))
+    
+    %% Data Stores with parallel lines
+    DS1[Product DB]
+    style DS1 path d: M 5,5 l 100,0 l 0,40 l -100,0 l 0,-40 M 10,0 l 100,0 l 0,40 l -100,0 l 0, -40
+    
+    DS2[Customer DB]
+    style DS2 path d: M 5,5 l 100,0 l 0,40 l -100,0 l 0,-40 M 10,0 l 100,0 l 0,40 l -100,0 l 0, -40
+    
+    DS3[Staff DB]
+    style DS3 path d: M 5,5 l 100,0 l 0,40 l -100,0 l 0,-40 M 10,0 l 100,0 l 0,40 l -100,0 l 0, -40
+    
+    DS4[Order DB]
+    style DS4 path d: M 5,5 l 100,0 l 0,40 l -100,0 l 0,-40 M 10,0 l 100,0 l 0,40 l -100,0 l 0, -40
+    
+    %% Flows
+    Customer -->|Search Request| P1
+    Customer -->|Place Order| P2
+    Staff -->|Login| P3
+    Staff -->|Manage Stock| P4
+    
+    P1 -->|Results| Customer
+    P2 -->|Bill| Customer
+    P3 -->|Access| Staff
+    
+    P1 <--> DS1
+    P2 <--> DS1
+    P2 <--> DS2
+    P2 --> DS4
+    P3 <--> DS3
+    P4 <--> DS1

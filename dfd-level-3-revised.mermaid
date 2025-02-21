@@ -1,0 +1,36 @@
+flowchart TD
+    %% Customer Side Processes
+    P1((1.1\nImage Upload))
+    P2((1.2\nImage Processing))
+    P3((1.3\nProduct Matching))
+    P4((2.1\nCart Management))
+    P5((2.2\nPayment Processing))
+    
+    %% Staff Side Processes
+    P6((3.1\nStaff Login))
+    P7((3.2\nAccess Control))
+    P8((4.1\nStock Management))
+    P9((4.2\nProduct Addition))
+    
+    %% Data Stores
+    DS1[Product DB]
+    DS2[Image DB]
+    DS3[Staff DB]
+    DS4[Transaction DB]
+    
+    %% Flows
+    P1 -->|Upload| P2
+    P2 -->|Features| P3
+    P3 <-->|Query| DS1
+    P3 -->|Store| DS2
+    
+    P4 -->|Order| P5
+    P5 -->|Record| DS4
+    P5 -->|Update| DS1
+    
+    P6 -->|Verify| P7
+    P7 <--> DS3
+    
+    P8 <--> DS1
+    P9 -->|New Product| DS1
+    P9 -->|Save Image| DS2

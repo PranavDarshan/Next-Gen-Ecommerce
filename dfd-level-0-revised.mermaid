@@ -1,0 +1,9 @@
+flowchart LR
+    Customer[Customer]
+    Staff[Staff]
+    System((E-commerce\nSystem))
+    
+    Customer -->|Requests/Images| System
+    System -->|Products/Bills| Customer
+    Staff -->|Login/Management| System
+    System -->|System Access| Staff

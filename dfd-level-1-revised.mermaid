@@ -1,0 +1,20 @@
+flowchart TD
+    %% External Entities
+    Customer[Customer]
+    Staff[Staff]
+    
+    %% Main Processes
+    P1((1.0\nCustomer Portal))
+    P2((2.0\nStaff Portal))
+    
+    %% Data Stores
+    DB[Main Database]
+    
+    %% Flows
+    Customer -->|Product Search/Orders| P1
+    P1 -->|Results/Bills| Customer
+    Staff -->|Login/Management| P2
+    P2 -->|Access/Reports| Staff
+    
+    P1 <-->|Data Access| DB
+    P2 <-->|Data Access| DB
