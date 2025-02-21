@@ -97,7 +97,9 @@ const generateBillPDF = (customerId: string, cartItems: CartItem[], gstRate = 18
 
   // Define ₹ symbol using Unicode
   const rupeeSymbol = "Rs."; // ₹
-
+  const shopname = localStorage.getItem('storeName') as string;
+  const shopadress = localStorage.getItem('storeLoc') as string;
+  const shopemail = localStorage.getItem('storeEmail') as string;
   // Add Logo (Top Left)
   if (shopLogo) {
     doc.addImage(shopLogo, "PNG", 15, 10, 30, 30); // Position at top-left
@@ -106,12 +108,12 @@ const generateBillPDF = (customerId: string, cartItems: CartItem[], gstRate = 18
   // Shop Name, Address & Email
   doc.setFontSize(18);
   doc.setFont("helvetica", "bold");
-  doc.text("Next Gen Retail Store", 105, 20, { align: "center" });
-
+  doc.text(shopname, 105, 20, { align: "center" });
+  const em = shopname.trim().toLowerCase().replace(/\s+/g, "") + "@gmail.com";
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
-  doc.text("123, Tech Street, Silicon Valley", 105, 28, { align: "center" });
-  doc.text("Email: support@nextgenretail.com", 105, 36, { align: "center" });
+  doc.text(shopadress, 105, 28, { align: "center" });
+  doc.text(em , 105, 36, { align: "center" });
 
   // Tax Bill Title
   doc.setFontSize(14);

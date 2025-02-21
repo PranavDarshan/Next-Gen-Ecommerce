@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  useEffect} from 'react';
 import { CircleDollarSign, BarChart3 } from 'lucide-react';
 import { LoginForm } from '../components/staff/LoginForm';
 import { useAuth } from '../hooks/useAuth';
@@ -9,10 +9,16 @@ export function StaffPortal() {
   const { session, login, loading } = useAuth();
   const [loginError, setLoginError] = useState<string>();
   const [activePage, setActivePage] = useState<'inventory' | 'billing'>('inventory');
+  const [staffName, setStaffName] = useState<string | null>(null);
 
+ 
   const handleLogin = async (email: string, password: string) => {
     try {
       await login(email, password);
+      const storedName = localStorage.getItem('BillingStaffName');
+    if (storedName) {
+      setStaffName(storedName);
+    }
     } catch (error) {
       setLoginError('Invalid credentials');
     }
@@ -25,9 +31,10 @@ export function StaffPortal() {
   if (!session) {
     return <LoginForm onLogin={handleLogin} error={loginError} />;
   }
-
+  
   return (
     <div className="space-y-8">
+      <h1>Welcome {staffName}</h1>
       <div className="flex space-x-4">
         <button
           onClick={() => setActivePage('inventory')}

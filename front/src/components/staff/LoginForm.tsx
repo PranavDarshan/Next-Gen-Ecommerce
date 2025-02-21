@@ -32,10 +32,16 @@ export function LoginForm({ onLogin }: LoginFormProps) {
       }
   
       const userData = await response.json(); // Assuming the response contains user data like token or email
-  
+      console.log(userData)
       // Store the storeId from the user data in localStorage
       if (userData.store && userData.store.storeId) {
         localStorage.setItem('storeId', userData.store.storeId); // Store only the storeId
+        localStorage.setItem('storeName', userData.store.storeName);
+        localStorage.setItem('storeEmail', userData.store.email);
+        localStorage.setItem('storeLoc', userData.store.location);
+        localStorage.setItem('BillingStaff', userData.email);
+        localStorage.setItem('BillingStaffName', userData.staffName);
+        localStorage.setItem('BillingStaffId', userData.staffId);
       }
   
       // Proceed with the onLogin callback if login is successful
