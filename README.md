@@ -106,7 +106,7 @@ The backend runs on **port 8080**, and you can test the API endpoints using **Po
 
 1. **User** registers and logs in.
 2. Browse **products** and add them to the **cart**.
-3. **Checkout** securely via Stripe.
+3. **Checkout** and generate a bill.
 4. **Admins** manage orders, users, and inventory.
 
 ## API Endpoints
