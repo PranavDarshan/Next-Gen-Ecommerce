@@ -54,6 +54,9 @@
 - **MySQL**
 
 ### 🛠 Backend (Spring Boot)
+
+The backend runs on **port 8080**, and you can test the API endpoints using **Postman** or any other API testing tool.
+
 1. Clone the repository:
    ```sh
    git clone https://github.com/PranavDarshan/Next-Gen-Ecommerce.git
@@ -61,7 +64,8 @@
    ```
 
 2. Set up the database:  
-   - **MySQL**: Create a database named `ecom`  
+   - **MySQL**: Create a database named `ecom`
+   - The `mysql` folder contains the SQL queries required to generate the necessary tables for the application to function properly. Make sure to execute these queries in your MySQL database before running the backend.
 
 3. Configure `application.properties`:
    ```properties
@@ -106,6 +110,9 @@
 4. **Admins** manage orders, users, and inventory.
 
 ## API Endpoints
+
+All endpoints run on **http://localhost:8080**
+
 
 | Method | Endpoint                     | Description                      |
 |--------|------------------------------|----------------------------------|
